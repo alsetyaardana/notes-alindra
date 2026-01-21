@@ -1,34 +1,51 @@
-📝 Ardnotes - Digital Garden
-Selamat datang di Ardnotes, sebuah repositori catatan teknis dan jurnal pribadi yang dikelola oleh Alindra Setya Ardana. Website ini dibangun dengan fokus pada kecepatan, keamanan, dan otomasi penuh dari penulisan hingga publikasi.
+# 📔 Ardnotes - Alindra's Digital Garden
 
-🌐 Live Site: notes.alindra.my.id
+[![Build with Hugo](https://github.com/alsetyaardana/notes-alindra/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/alsetyaardana/notes-alindra/actions/workflows/gh-pages.yml)
+[![Automation by n8n](https://img.shields.io/badge/Automation-n8n-FF6C37?style=flat&logo=n8n)](https://n8n.io/)
+[![Live on GitHub Pages](https://img.shields.io/badge/Live-notes.alindra.my.id-blue?style=flat)](https://notes.alindra.my.id)
 
-🚀 Tech Stack & Automation
-Sistem ini menggunakan arsitektur Modern Web Pipeline untuk memastikan proses writing-to-live berjalan tanpa hambatan [cite: 12-01-2026]:
+**Ardnotes** adalah ekosistem catatan teknis otomatis yang dirancang untuk mendokumentasikan perjalanan saya sebagai **Solution Architect**. Sistem ini mengintegrasikan fleksibilitas penulisan di Notion dengan performa statis Hugo melalui pipa otomasi n8n.
 
-- Content Source: Notion (Database-driven writing).
-- Static Site Generator: Hugo with PaperMod Theme.
-- Orchestrator: n8n (Automated Content Pipeline).
-- Hosting & CI/CD: GitHub Pages & GitHub Actions.
+---
 
-🛠️ How It Works (The Pipeline)
-Sistem ini dirancang untuk berjalan secara otomatis tanpa perlu menyentuh terminal Git setiap hari:
-1. Writing: Catatan dibuat di Notion dengan status Ready.
-2. Syncing (n8n): n8n melakukan polling (setiap jam 10 malam) atau dipicu secara manual via Webhook.
-3. Formatting: n8n mengubah konten Notion menjadi file Markdown dengan Frontmatter Hugo secara otomatis.
-4. Pushing: n8n melakukan git push ke repositori ini pada branch main.
-5. Deploying: GitHub Actions mendeteksi perubahan dan langsung melakukan rebuild serta deploy ke GitHub Pages.
+## 🏗️ System Architecture
 
-📂 Folder Structure
-Plaintext
+Website ini beroperasi dengan alur kerja **CI/CD** penuh dari hulu ke hilir:
 
-.
-├── .github/workflows/      # Konfigurasi CI/CD (GitHub Actions)
-├── content/posts/          # Tempat artikel Markdown hasil sinkronisasi n8n
-├── themes/PaperMod/        # Submodule tema blog
-├── hugo.yaml               # Konfigurasi utama website
-└── README.md               # Dokumentasi ini
+```mermaid
+graph LR
+    A[Notion Database] -- "Trigger" --> B(n8n Orchestrator)
+    B -- "Markdown + Regex Slug" --> C[GitHub Repo]
+    C -- "GitHub Actions" --> D[Hugo Build]
+    D -- "Publish" --> E[notes.alindra.my.id]
+```
+🛠️ Tech Stack
+Sebagai proyek berbasis efisiensi, infrastruktur ini menggunakan:
+- CMS: Notion sebagai pusat basis data catatan.
+- Engine: Hugo dengan tema PaperMod.
+- Automation: n8n untuk transformasi data dan slug generation otomatis.
+- CI/CD: GitHub Actions untuk proses deployment otomatis pada setiap push.
 
+⚙️ Automation Logic (n8n)
+Workflow n8n saya (Notes Poster) memiliki tiga metode pemicu:
+- Scheduled: Sinkronisasi otomatis setiap pukul 22:00 WIB [cite: 12-01-2026].
+- Webhook: Tombol "Manual Publish" langsung dari dalam halaman Notion.
+- Instant: Eksekusi manual melalui dashboard n8n.
+Sistem secara otomatis mengubah judul catatan menjadi slug yang valid dan merakit Frontmatter YAML agar kompatibel dengan tema Hugo.
 
-👨‍💻 Maintainer
-Alindra Setya Ardana Presales Engineer & Solution Architect Enthusiast
+📂 Project Structure
+- .github/workflows/: Skrip GitHub Actions (gh-pages.yml).
+- content/posts/: Output artikel .md hasil sinkronisasi n8n.
+- themes/PaperMod/: Submodule tema blog.
+- hugo.yaml: Konfigurasi utama site (Domain & Menu).
+- static/: Aset gambar dan file statis lainnya.
+
+👤 Maintainer
+- Alindra Setya Ardana
+- Role: Presales Engineer / Solution Architect Enthusiast.
+- Interests: IT Networking, Security, and Agentic AI.
+
+Last updated: January 21, 2026
+LinkedIn: linkedin.com/in/alsetyaardana.
+
+Last updated: January 21, 202
