@@ -46,6 +46,3 @@ Sistem secara otomatis mengubah judul catatan menjadi slug yang valid dan meraki
 - Interests: IT Networking, Security, and Agentic AI.
 
 Last updated: January 21, 2026
-LinkedIn: linkedin.com/in/alsetyaardana.
-
-Last updated: January 21, 202
