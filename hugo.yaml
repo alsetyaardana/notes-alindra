@@ -1,0 +1,62 @@
+# --- Konfigurasi Dasar ---
+baseURL: https://notes.alindra.my.id
+languageCode: en-us
+title: Daily Notes Alindra
+theme: PaperMod
+
+params:
+  # --- Pengaturan Tampilan & Estetika ---
+  env: production
+  author: Alindra Setya Ardana
+  defaultTheme: auto
+  ShowReadingTime: false
+  ShowShareButtons: false
+  ShowToc: true # Menampilkan daftar isi di artikel teknis
+  
+  # Perbaikan Estetika: Menghilangkan teks di pojok kiri atas agar tidak double
+  label:
+    text: "Ardnotes" 
+
+  # --- Profile Mode (Halaman Depan) ---
+  profileMode:
+      enabled: true
+      title: "Daily Notes Alindra"
+      subtitle: "Future Solution Architect | Presales Engineer"
+      # Cukup tuliskan folder di dalam static, jangan sertakan kata "static" itu sendiri
+      imageUrl: "/profile/book.png" 
+      imageWidth: 120
+      imageHeight: 120
+      buttons:
+        - name: Posts
+          url: posts
+        - name: About
+          url: about
+
+  # --- Link Media Sosial ---
+  socialIcons:
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/alindra-setya-ardana-7a0a78281/"
+    - name: "github"
+      url: "https://github.com/asetyaardana"
+    - name: "portofolio"
+      url: "https://alindra.my.id"
+
+# --- Pengaturan Menu Atas (Header) ---
+menu:
+  main:
+    - name: "Posts"
+      url: "/posts"
+      weight: 10
+    - name: "About"
+      url: "/about"
+      weight: 20
+    - name: "Search"
+      url: "/search" # Membutuhkan setting outputs di bawah
+      weight: 30
+
+# --- Konfigurasi Search & RSS ---
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
