@@ -1,7 +1,7 @@
 ---
 date: '2026-01-21T13:30:24+07:00'
 draft: false
-title: 'Kopikafein'
+title: 'Takaran Kopi & Gula'
 ---
 
 Dalam pembuatan kopi dengan standar coffe shop umumnya menggunakan alat profesional, yang pastinya jika kita membeli langsung ke coffe shop harganya bisa bikin kantong jebol kalau terlalu sering.
