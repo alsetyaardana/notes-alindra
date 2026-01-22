@@ -11,7 +11,7 @@ categories: ["Insight & Journal"]
    > Out-of-Network: Konten luar berdasarkan:
      - Social Graph: Interaksi orang-orang di lingkaran Anda.
      - Embedding Spaces: Kesamaan minat/topik (misal: komunitas IT).
-2. Scoring / Ranking (Pemberian Skor)
+3. Scoring / Ranking (Pemberian Skor)
    Prediksi probabilitas interaksi menggunakan Machine Learning.
      - High-Value Signals: Share, Save, & Detailed Reply.
      - Low-Value Signals: Like (bobotnya kini lebih rendah dibandingkan Share).
@@ -26,5 +26,5 @@ categories: ["Insight & Journal"]
      - Dwell Time: Durasi perhatian (berapa detik Anda berhenti men-scroll).
      - Negative Signals: Mute, Not Interested, atau Fast Scrolling (melewati konten dengan cepat).
 
-|💡 Core Logic:
-| Algoritma modern telah bergeser dari "Clicks" menuju "Attention". Fokus utama sistem adalah mempertahankan pengguna di dalam aplikasi selama mungkin melalui analisis Dwell Time dan Shareability.
+💡 Core Logic:
+Algoritma modern telah bergeser dari "Clicks" menuju "Attention". Fokus utama sistem adalah mempertahankan pengguna di dalam aplikasi selama mungkin melalui analisis Dwell Time dan Shareability.
