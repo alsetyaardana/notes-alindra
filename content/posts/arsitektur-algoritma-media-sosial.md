@@ -3,7 +3,7 @@ title: "Arsitektur Algoritma Media Sosial"
 date: 2026-01-22
 categories: ["Insight & Journal"]
 ---
-🛠️ Arsitektur Algoritma Media Sosial
+Arsitektur Algoritma Media Sosial
 
 1. Candidate Generation (Penyaringan Awal)
    Tahap seleksi dari jutaan konten menjadi ~1.500 kandidat relevan.
@@ -26,5 +26,5 @@ categories: ["Insight & Journal"]
      - Dwell Time: Durasi perhatian (berapa detik Anda berhenti men-scroll).
      - Negative Signals: Mute, Not Interested, atau Fast Scrolling (melewati konten dengan cepat).
 
-💡 Core Logic:
+Core Logic:
 Algoritma modern telah bergeser dari "Clicks" menuju "Attention". Fokus utama sistem adalah mempertahankan pengguna di dalam aplikasi selama mungkin melalui analisis Dwell Time dan Shareability.
