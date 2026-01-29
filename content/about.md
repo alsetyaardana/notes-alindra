@@ -5,9 +5,11 @@ title: 'About'
 ---
 
 Halo, Saya Alindra! 👋
+
 Selamat datang di "kebun digital" saya. Di sini bukan tempat artikel jurnal yang kaku, melainkan wadah buat saya naruh semua hasil ngoprek anomali supaya nggak hilang ditelan waktu.
 
 Siapa Saya?
+
 Secara administratif, saya adalah seorang Pre-sales Engineer yang sehari-hari berkutat dengan Network & Security. Namun, di balik itu, saya tetaplah Ordinary People yang cuma hobi belajar dan bereksperimen.
 
 Beberapa hal yang sedang konsisten saya kerjakan:
