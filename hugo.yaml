@@ -30,7 +30,7 @@ params:
         - name: Posts
           url: posts
         - name: About
-          url: about
+          url: https://www.alindra.my.id
 
   # --- Link Media Sosial ---
   socialIcons:
