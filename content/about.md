@@ -19,6 +19,7 @@ Beberapa hal yang sedang konsisten saya kerjakan:
 - Community Roots: Bangga jadi alumni BLC Telkom Klaten, tempat saya belajar bahwa relasi dan soft skill itu pondasi yang sangat mahal.
 
 Kenapa Ada notes.alindra.my.id?
+
 Saya percaya kalau memori manusia itu ada batasnya, makanya saya buat situs ini sebagai Second Brain saya. Isinya campur aduk:
 - Dokumentasi teknis (biar nggak lupa pas harus deployment lagi).
 - Catatan belajar tentang AI dan automasi.
