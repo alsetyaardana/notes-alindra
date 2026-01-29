@@ -13,7 +13,7 @@ Cara nya adalah melakukan optimasi isi konten pada website sesuai dengan **keywo
 
 1.  **Crawling**: Googlebot mencari halaman baru melalui link dari website satu ke website lain
 2.  **Indexing**: Google melakukan analisis konten (teks, gambar, struktur) dan menyimpanya ke database
-3.  **Ranking**: Saat user mencari keyword Google akan memilih konten paling relevan berdasarkan (**E-E-A-T**) untuk ditampilkan ke posisi teratas
+3.  **Ranking**: Saat user mencari keyword Google akan memilih konten paling relevan berdasarkan (**Experience, Expertise, Authoritativeness, dan Trustworthiness**) untuk ditampilkan ke posisi teratas
 
 ## Strategi untuk terindeks oleh google
 
