@@ -1,16 +1,20 @@
 ---
 date: '2026-01-21T13:07:14+07:00'
 draft: false
-title: 'About'
+title: 'About Alindra Setya Ardana - Solution Architect & Automation Enthusiast'
+description: 'Profil lengkap Alindra Setya Ardana - Pre-sales Engineer, Solution Architect, dan pencipta Notes Alindra. Spesialisasi network security dan automation.'
+keywords: ['alindra setya ardana', 'alindra', 'solution architect', 'pre-sales engineer', 'network security', 'automation', 'notes alindra']
 ---
 
-Halo, Saya Alindra! 👋
+# About Alindra Setya Ardana
 
-Selamat datang di "kebun digital" saya. Di sini bukan tempat artikel jurnal yang kaku, melainkan wadah buat saya naruh semua hasil ngoprek anomali supaya nggak hilang ditelan waktu.
+Halo, Saya **Alindra**! 👋
 
-Siapa Saya?
+Selamat datang di "kebun digital" **Notes Alindra**. Di sini bukan tempat artikel jurnal yang kaku, melainkan wadah buat saya naruh semua hasil ngoprek anomali supaya nggak hilang ditelan waktu.
 
-Secara administratif, saya adalah seorang Pre-sales Engineer yang sehari-hari berkutat dengan Network & Security. Namun, di balik itu, saya tetaplah Ordinary People yang cuma hobi belajar dan bereksperimen.
+## Siapa Saya?
+
+Secara administratif, saya **Alindra Setya Ardana** adalah seorang Pre-sales Engineer yang sehari-hari berkutat dengan Network & Security. Namun, di balik itu, saya tetaplah ordinary people yang cuma hobi belajar dan bereksperimen.
 
 Beberapa hal yang sedang konsisten saya kerjakan:
 - Infrastructure Specialist: Mengurus MikroTik, Cisco, hingga solusi keamanan enterprise.
@@ -18,11 +22,16 @@ Beberapa hal yang sedang konsisten saya kerjakan:
 - Student Life: Saat ini sedang menempuh studi Sistem Informasi di Universitas Terbuka sambil kerja full-time.
 - Community Roots: Bangga jadi alumni BLC Telkom Klaten, tempat saya belajar bahwa relasi dan soft skill itu pondasi yang sangat mahal.
 
-Kenapa Ada notes.alindra.my.id?
+## Kenapa Ada notes.alindra.my.id?
 
-Saya percaya kalau memori manusia itu ada batasnya, makanya saya buat situs ini sebagai Second Brain saya. Isinya campur aduk:
-- Dokumentasi teknis (biar nggak lupa pas harus deployment lagi).
-- Catatan belajar tentang AI dan automasi.
-- Pikiran acak seputar teknologi dan insight menarik yang saya temui
+Saya percaya kalau memori manusia itu ada batasnya, makanya saya buat **Notes Alindra** sebagai Second Brain saya. Isinya campur aduk:
+- [Dokumentasi teknis](/posts/loop-node-n8n) (biar nggak lupa pas harus deployment lagi)
+- [Catatan belajar tentang AI dan automasi](/categories/ai-automation)
+- [Insight menarik](/posts/metacognitive) seputar teknologi dan pengembangan diri
+- [Tips praktis](/posts/takaran-kopi-nescafe-clasic) untuk kehidupan sehari-hari
 
-Kalau ada catatan di sini yang ternyata bantu masalah teknis kamu, ya syukur. Kalau nggak ada, anggap saja ini museum pribadi saya yang kebetulan bisa kamu kunjungi.
+Kalau ada catatan di sini yang ternyata bantu masalah teknis kamu, ya syukur. Kalau nggak ada, anggap saja ini museum pribadi **Alindra** yang kebetulan bisa kamu kunjungi.
+
+---
+
+*Temukan lebih banyak catatan teknis dan insight di [Posts](/posts) atau gunakan fitur [Search](/search) untuk mencari topik spesifik.*

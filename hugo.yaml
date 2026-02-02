@@ -4,7 +4,11 @@ languageCode: en-us
 title: Daily Notes Alindra
 theme: PaperMod
 
+# --- SEO Configuration ---
 params:
+  description: "Digital garden berisi catatan teknis, insight, dan dokumentasi oleh Alindra Setya Ardana - Solution Architect dan Pre-sales Engineer"
+  keywords: ["alindra", "notes alindra", "alindra setya ardana", "solution architect", "automation", "network security", "technical notes"]
+
   # --- Pengaturan Tampilan & Estetika ---
   env: production
   author: Alindra Setya Ardana
