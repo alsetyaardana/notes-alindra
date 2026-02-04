@@ -39,7 +39,7 @@ Sistem secara otomatis mengubah judul catatan menjadi slug yang valid serta meng
 - themes/PaperMod/: Submodule tema blog.
 - hugo.yaml: Konfigurasi utama site (Domain & Menu).
 - static/: Aset gambar dan file statis lainnya.
-- N8N-Workflow/ : Workflow n8n yang digunakan untuk automatic post.
+- n8n-workflow/ : Workflow n8n yang digunakan untuk automatic post.
 
 👤 Maintainer
 - Alindra Setya Ardana
