@@ -28,7 +28,7 @@ Sebagai proyek berbasis efisiensi, infrastruktur ini menggunakan:
 
 ⚙️ Automation Logic (n8n)
 Workflow n8n saya (Notes Poster) memiliki tiga metode pemicu:
-- Scheduled: Sinkronisasi otomatis setiap pukul 22:00 WIB [cite: 12-01-2026].
+- Scheduled: Sinkronisasi otomatis setiap pukul 22:00 WIB.
 - Webhook: Tombol "Manual Publish" langsung dari dalam halaman Notion.
 - Instant: Eksekusi manual melalui dashboard n8n.
 Sistem secara otomatis mengubah judul catatan menjadi slug yang valid serta mengoptipasi isi konten untuk SEO dan merakit Frontmatter YAML agar kompatibel dengan tema Hugo.
