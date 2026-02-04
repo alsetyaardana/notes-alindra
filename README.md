@@ -4,7 +4,7 @@
 [![Automation by n8n](https://img.shields.io/badge/Automation-n8n-FF6C37?style=flat&logo=n8n)](https://n8n.io/)
 [![Live on GitHub Pages](https://img.shields.io/badge/Live-notes.alindra.my.id-blue?style=flat)](https://notes.alindra.my.id)
 
-**Ardnotes** adalah ekosistem catatan teknis otomatis yang dirancang untuk mendokumentasikan perjalanan saya sebagai **Solution Architect**. Sistem ini mengintegrasikan fleksibilitas penulisan di Notion dengan performa statis Hugo melalui pipa otomasi n8n.
+**Ardnotes** adalah ekosistem catatan teknis otomatis yang dirancang untuk mendokumentasikan perjalanan saya sebagai **Presales Engineer dan Tech Enthusiast**. Sistem ini mengintegrasikan fleksibilitas penulisan di Notion dengan performa statis Hugo melalui pipa otomasi n8n.
 
 ---
 
@@ -23,7 +23,7 @@ graph LR
 Sebagai proyek berbasis efisiensi, infrastruktur ini menggunakan:
 - CMS: Notion sebagai pusat basis data catatan.
 - Engine: Hugo dengan tema PaperMod.
-- Automation: n8n untuk transformasi data dan slug generation otomatis.
+- Automation: n8n untuk transformasi data, SEO dan slug generation otomatis.
 - CI/CD: GitHub Actions untuk proses deployment otomatis pada setiap push.
 
 ⚙️ Automation Logic (n8n)
@@ -31,7 +31,7 @@ Workflow n8n saya (Notes Poster) memiliki tiga metode pemicu:
 - Scheduled: Sinkronisasi otomatis setiap pukul 22:00 WIB [cite: 12-01-2026].
 - Webhook: Tombol "Manual Publish" langsung dari dalam halaman Notion.
 - Instant: Eksekusi manual melalui dashboard n8n.
-Sistem secara otomatis mengubah judul catatan menjadi slug yang valid dan merakit Frontmatter YAML agar kompatibel dengan tema Hugo.
+Sistem secara otomatis mengubah judul catatan menjadi slug yang valid serta mengoptipasi isi konten untuk SEO dan merakit Frontmatter YAML agar kompatibel dengan tema Hugo.
 
 📂 Project Structure
 - .github/workflows/: Skrip GitHub Actions (gh-pages.yml).
