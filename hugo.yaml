@@ -43,7 +43,7 @@ params:
     - name: "github"
       url: "https://github.com/asetyaardana"
     - name: "portofolio"
-      url: "https://alindra.my.id"
+      url: "https://www.alindra.my.id"
 
 # --- Pengaturan Menu Atas (Header) ---
 menu:
