@@ -1,0 +1,433 @@
+{
+  "name": "Notes Poster",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -528,
+        208
+      ],
+      "id": "71fc078e-badb-481b-a53c-875170e3e565",
+      "name": "INSTANT_TRIGGER"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 22
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -528,
+        -192
+      ],
+      "id": "2a495d7f-ac00-48da-9f15-e96c80bbd5c3",
+      "name": "10.00_TRIGGER"
+    },
+    {
+      "parameters": {
+        "path": "publish-now",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -528,
+        0
+      ],
+      "id": "a295d663-f13d-47e7-8f02-20663051d6f5",
+      "name": "LINK_TRIGGER",
+      "webhookId": "ae2db165-3346-4967-b04a-078af296f03c"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "2db3ba53-8d5f-80ec-b605-fa12bdc8b13a",
+          "mode": "list",
+          "cachedResultName": "DB_ARDNOTES",
+          "cachedResultUrl": "https://www.notion.so/2db3ba538d5f80ecb605fa12bdc8b13a"
+        },
+        "filterType": "manual",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Status|select",
+              "condition": "equals",
+              "selectValue": "Ready"
+            },
+            {
+              "key": "Visibility|select",
+              "condition": "equals",
+              "selectValue": "Public"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        -160,
+        -192
+      ],
+      "id": "64902788-85cf-4a12-82d7-a70688a60fde",
+      "name": "CONTENT_READY_SEARCH",
+      "credentials": {
+        "notionApi": {
+          "id": "DMtZa2TZ2ZG3xcYY",
+          "name": "Notion - Alindra Database"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.id }}"
+        },
+        "returnAll": true,
+        "fetchNestedBlocks": true
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        64,
+        -192
+      ],
+      "id": "e07c47f0-26f1-4ef7-94dc-f82fcb2a9fc3",
+      "name": "GET_CONTENT",
+      "credentials": {
+        "notionApi": {
+          "id": "DMtZa2TZ2ZG3xcYY",
+          "name": "Notion - Alindra Database"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "concatenate",
+              "field": "content",
+              "separateBy": " "
+            }
+          ]
+        },
+        "fieldsToSplitBy": "={{ $json.parent_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        272,
+        -192
+      ],
+      "id": "d41d0da2-cd8c-4d57-bf5e-3c9310466d42",
+      "name": "MERGE2BLOCK"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "01106da5-1220-4e56-8837-4d42c6a55f06",
+              "name": "filename",
+              "value": "={{ $('CONTENT_READY_SEARCH').item.json.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') }}.md",
+              "type": "string"
+            },
+            {
+              "id": "2141f92a-4d5b-4d56-8b64-f827f21db712",
+              "name": "content",
+              "value": "={{\n(() => {\n  // 1. Ambil & Bersihkan Output dari AI\n  const rawOutput = $node[\"FORMATER\"].json.output;\n  const cleanJson = rawOutput.replace(/```json|```/g, \"\").trim();\n  const aiData = JSON.parse(cleanJson);\n  \n  // 2. Data dari Notion\n  const notionData = $('CONTENT_READY_SEARCH').item.json;\n  const category = notionData.property_category || \"Insight & Journal\";\n\n  // 3. Mapping Sub-Category (Tags)\n  const tagMap = {\n    \"AI & Automation\": [\"automation\", \"n8n\", \"workflow\", \"tutorial\"],\n    \"Insight & Journal\": [\"insight\", \"analysis\", \"tips\", \"panduan\"],\n    \"Network & Security\": [\"network\", \"security\", \"infrastructure\", \"cisco\"],\n    \"Lifestyle\": [\"tips\", \"praktis\", \"hemat\", \"tutorial\"]\n  };\n  const categoryTags = tagMap[category] || [\"notes\"];\n\n  // 4. Merge Keywords (AI Keywords + Branding)\n  const branding = [\"Alindra\", \"Notes Alindra\"];\n  const finalKeywords = (aiData.seo_keywords || []).concat(branding);\n\n  // 5. Build Hugo Front Matter\n  // Perhatikan title sekarang menggunakan aiData.seo_title\n  return `---\ntitle: \"${aiData.seo_title.replace(/\"/g, '\\\\\"')}\"\ndate: ${notionData.property_date?.start || \"2026-02-03\"}\ncategories: [\"${category}\"]\ndescription: \"${aiData.meta_description.replace(/\"/g, '\\\\\"')}\"\nkeywords: ${JSON.stringify(finalKeywords)}\ntags: ${JSON.stringify(categoryTags)}\n---\n\n${aiData.formatted_content}`;\n})()\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        848,
+        -192
+      ],
+      "id": "a25ff258-6053-436f-ae2b-c683f618fe6b",
+      "name": "TOMARKDOWN",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "mode": "list",
+          "value": "alsetyaardana"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "notes-alindra",
+          "mode": "list",
+          "cachedResultName": "notes-alindra",
+          "cachedResultUrl": "https://github.com/alsetyaardana/notes-alindra"
+        },
+        "filePath": "=content/posts/{{ $json.filename }}",
+        "fileContent": "={{ $json.content }}",
+        "commitMessage": "=Automated publish: {{ $json.filename }}."
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        1056,
+        -192
+      ],
+      "id": "9dc8e514-a44b-4982-be03-0438ef51245f",
+      "name": "Create a file",
+      "webhookId": "e4bb7b3b-5c63-468c-8022-5d9d57d0c144",
+      "credentials": {
+        "githubApi": {
+          "id": "rB9XBJfx20mLfAB2",
+          "name": "Alindra - Clasic GitHub"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Notes Poster\nAutomated & Manual Publish Base on Notion",
+        "height": 736,
+        "width": 2592
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -848,
+        -288
+      ],
+      "id": "293293ee-282e-44f4-89ac-f6d2601fe7e2",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('CONTENT_READY_SEARCH').item.json.id }}",
+          "__regex": "^([0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12})"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Status|select",
+              "selectValue": "Published"
+            },
+            {
+              "key": "Keyword|rich_text",
+              "textContent": "={{ JSON.parse($node[\"FORMATER\"].json.output.replace(/```json|```/g, \"\")).seo_keywords.join(', ') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1264,
+        -192
+      ],
+      "id": "403433d5-3a48-4d54-9aa9-fdf5ddf571da",
+      "name": "UPDATESTATUS",
+      "credentials": {
+        "notionApi": {
+          "id": "DMtZa2TZ2ZG3xcYY",
+          "name": "Notion - Alindra Database"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        400,
+        0
+      ],
+      "id": "6dae0191-09ca-4d80-8a71-cc6b26f88922",
+      "name": "DEEPSEEK_AI",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "W87btj2HGPV7jDrD",
+          "name": "Alindra - DeepSeek"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.concatenated_content }}",
+        "options": {
+          "systemMessage": "\"You are an expert SEO specialist.\n\nYour Task:\n\nGenerate an SEO-optimized title (max 60 chars) that includes the main keywords.\n\nGenerate a meta description (150-160 chars).\n\nExtract 5-7 target SEO keywords.\n\nFormat the raw text into clean Markdown.\n\nOutput Requirement: Return ONLY a valid JSON: { \"seo_title\": \"...\", \"meta_description\": \"...\", \"seo_keywords\": [\"keyword1\", \"keyword2\"], \"formatted_content\": \"...\" }\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        480,
+        -192
+      ],
+      "id": "c0b09d69-13a1-464b-bdf8-11b2528702dc",
+      "name": "FORMATER"
+    }
+  ],
+  "pinData": {
+    "INSTANT_TRIGGER": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "10.00_TRIGGER": {
+      "main": [
+        [
+          {
+            "node": "CONTENT_READY_SEARCH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LINK_TRIGGER": {
+      "main": [
+        [
+          {
+            "node": "CONTENT_READY_SEARCH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "INSTANT_TRIGGER": {
+      "main": [
+        [
+          {
+            "node": "CONTENT_READY_SEARCH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CONTENT_READY_SEARCH": {
+      "main": [
+        [
+          {
+            "node": "GET_CONTENT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET_CONTENT": {
+      "main": [
+        [
+          {
+            "node": "MERGE2BLOCK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MERGE2BLOCK": {
+      "main": [
+        [
+          {
+            "node": "FORMATER",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TOMARKDOWN": {
+      "main": [
+        [
+          {
+            "node": "Create a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a file": {
+      "main": [
+        [
+          {
+            "node": "UPDATESTATUS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DEEPSEEK_AI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "FORMATER",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FORMATER": {
+      "main": [
+        [
+          {
+            "node": "TOMARKDOWN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "7fe4ae32-202a-481f-a3a2-037057843962",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "277409fd75c8e1211f4ebc65bad416c4ae32665ec7ebc2dfa4998e9157e12243"
+  },
+  "id": "viEINS0vJcxNPTnsQYDrG",
+  "tags": []
+}
