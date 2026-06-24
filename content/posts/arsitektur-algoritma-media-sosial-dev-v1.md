@@ -9,6 +9,6 @@ slug: "arsitektur-algoritma-media-sosial-dev-v1"
 
 Ini adalah paragraf pengantar tentang algoritma.
 
-![Ilustrasi Arsitektur](https://notes.alindra.my.id/images/blog/arsitektur-algoritma-media-sosial-v2/arsitektur-algoritma-media-sosial-v2-1.png)
+![Ilustrasi Arsitektur](static/images/posts/arsitektur-algoritma-media-sosial-dev-v1-1.png)
 
 Algoritma ini menggunakan struktur data yang sangat kompleks dan terukur.
