@@ -21,7 +21,7 @@ graph LR
 ```
 🛠️ Tech Stack
 Sebagai proyek berbasis efisiensi, infrastruktur ini menggunakan:
-- CMS: Notion sebagai pusat basis data catatan.
+- CMS: Paralife AI sebagai pusat basis data catatan.
 - Engine: Hugo dengan tema PaperMod.
 - Automation: [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git) untuk transformasi data, SEO dan slug generation otomatis.
 - CI/CD: GitHub Actions untuk proses deployment otomatis pada setiap push.
@@ -41,4 +41,4 @@ Manajemen automasi catatan sekarang dipindahkan dari n8n ke [Paralife-AI](https:
 - Role: Presales Engineer / Solution Architect Enthusiast.
 - Interests: IT Networking, Security, and Agentic AI.
 
-Last updated: January 21, 2026
+Last updated: Juli 23, 2026
