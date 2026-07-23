@@ -1,10 +1,10 @@
 # 📔 Ardnotes - Alindra's Digital Garden
 
 [![Build with Hugo](https://github.com/alsetyaardana/notes-alindra/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/alsetyaardana/notes-alindra/actions/workflows/gh-pages.yml)
-[![Automation by n8n](https://img.shields.io/badge/Automation-n8n-FF6C37?style=flat&logo=n8n)](https://n8n.io/)
+[![Automation by Paralife-AI](https://img.shields.io/badge/Automation-Paralife--AI-6C63FF?style=flat)](https://github.com/alsetyaardana/paralife-ai)
 [![Live on GitHub Pages](https://img.shields.io/badge/Live-notes.alindra.my.id-blue?style=flat)](https://notes.alindra.my.id)
 
-**Ardnotes** adalah ekosistem catatan teknis otomatis yang dirancang untuk mendokumentasikan perjalanan saya sebagai **Presales Engineer dan Tech Enthusiast**. Sistem ini mengintegrasikan fleksibilitas penulisan di Notion dengan performa statis Hugo melalui pipa otomasi n8n.
+**Ardnotes** adalah ekosistem catatan teknis otomatis yang dirancang untuk mendokumentasikan perjalanan saya sebagai **Presales Engineer dan Tech Enthusiast**. Sistem ini mengintegrasikan fleksibilitas penulisan di Notion dengan performa statis Hugo, diorkestrasi oleh [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git).
 
 ---
 
@@ -14,7 +14,7 @@ Website ini beroperasi dengan alur kerja **CI/CD** penuh dari hulu ke hilir:
 
 ```mermaid
 graph LR
-    A[Notion Database] -- "Trigger" --> B(n8n Orchestrator)
+    A[Notion Database] -- "Trigger" --> B(Paralife-AI Orchestrator)
     B -- "Markdown + Regex Slug" --> C[GitHub Repo]
     C -- "GitHub Actions" --> D[Hugo Build]
     D -- "Publish" --> E[notes.alindra.my.id]
@@ -23,23 +23,18 @@ graph LR
 Sebagai proyek berbasis efisiensi, infrastruktur ini menggunakan:
 - CMS: Notion sebagai pusat basis data catatan.
 - Engine: Hugo dengan tema PaperMod.
-- Automation: n8n untuk transformasi data, SEO dan slug generation otomatis.
+- Automation: [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git) untuk transformasi data, SEO dan slug generation otomatis.
 - CI/CD: GitHub Actions untuk proses deployment otomatis pada setiap push.
 
-⚙️ Automation Logic (n8n)
-Workflow n8n saya (Notes Poster) memiliki tiga metode pemicu:
-- Scheduled: Sinkronisasi otomatis setiap pukul 22:00 WIB.
-- Webhook: Tombol "Manual Publish" langsung dari dalam halaman Notion.
-- Instant: Eksekusi manual melalui dashboard n8n.
-Sistem secara otomatis mengubah judul catatan menjadi slug yang valid serta mengoptipasi isi konten untuk SEO dan merakit Frontmatter YAML agar kompatibel dengan tema Hugo.
+⚙️ Automation Logic (Paralife-AI)
+Manajemen automasi catatan sekarang dipindahkan dari n8n ke [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git), yang menangani sinkronisasi dari Notion, generate slug yang valid, optimasi konten untuk SEO, serta perakitan Frontmatter YAML agar kompatibel dengan tema Hugo.
 
 📂 Project Structure
 - .github/workflows/: Skrip GitHub Actions (gh-pages.yml).
-- content/posts/: Output artikel .md hasil sinkronisasi n8n.
+- content/posts/: Output artikel .md hasil sinkronisasi Paralife-AI.
 - themes/PaperMod/: Submodule tema blog.
 - hugo.yaml: Konfigurasi utama site (Domain & Menu).
 - static/: Aset gambar dan file statis lainnya.
-- n8n-workflow/ : Workflow n8n yang digunakan untuk automatic post.
 
 👤 Maintainer
 - Alindra Setya Ardana
