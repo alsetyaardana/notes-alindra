@@ -4,41 +4,32 @@
 [![Automation by Paralife-AI](https://img.shields.io/badge/Automation-Paralife--AI-6C63FF?style=flat)](https://github.com/alsetyaardana/paralife-ai)
 [![Live on GitHub Pages](https://img.shields.io/badge/Live-notes.alindra.my.id-blue?style=flat)](https://notes.alindra.my.id)
 
-**Ardnotes** adalah ekosistem catatan teknis otomatis yang dirancang untuk mendokumentasikan perjalanan saya sebagai **Presales Engineer dan Tech Enthusiast**. Sistem ini mengintegrasikan fleksibilitas penulisan di Notion dengan performa statis Hugo, diorkestrasi oleh [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git).
+**Ardnotes** adalah kebun digital tempat saya mendokumentasikan perjalanan sebagai **Presales Engineer dan Tech Enthusiast** — campuran catatan teknis, refleksi belajar, dan hal-hal kecil yang layak diarsipkan. Seluruh siklus hidup catatan, dari penulisan sampai tayang di web, dikelola penuh oleh [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git), lalu dirender statis lewat Hugo.
 
 ---
 
-## 🏗️ System Architecture
-
-Website ini beroperasi dengan alur kerja **CI/CD** penuh dari hulu ke hilir:
+## 🏗️ Cara Kerja
 
 ```mermaid
 graph LR
-    A[Notion Database] -- "Trigger" --> B(Paralife-AI Orchestrator)
-    B -- "Markdown + Regex Slug" --> C[GitHub Repo]
-    C -- "GitHub Actions" --> D[Hugo Build]
-    D -- "Publish" --> E[notes.alindra.my.id]
+    A[Paralife-AI] -- "Markdown + Slug + SEO" --> B[GitHub Repo]
+    B -- "GitHub Actions" --> C[Hugo Build]
+    C -- "Publish" --> D[notes.alindra.my.id]
 ```
-🛠️ Tech Stack
-Sebagai proyek berbasis efisiensi, infrastruktur ini menggunakan:
-- CMS: Paralife AI sebagai pusat basis data catatan.
-- Engine: Hugo dengan tema PaperMod.
-- Automation: [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git) untuk transformasi data, SEO dan slug generation otomatis.
-- CI/CD: GitHub Actions untuk proses deployment otomatis pada setiap push.
 
-⚙️ Automation Logic (Paralife-AI)
-Manajemen automasi catatan sekarang dipindahkan dari n8n ke [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git), yang menangani sinkronisasi dari Notion, generate slug yang valid, optimasi konten untuk SEO, serta perakitan Frontmatter YAML agar kompatibel dengan tema Hugo.
+Paralife-AI bertindak sebagai otak di balik layar: menyiapkan konten, slug, frontmatter, dan optimasi SEO sebelum masuk ke repo ini. Dari titik itu, GitHub Actions mengambil alih — build dengan Hugo lalu deploy ke `notes.alindra.my.id` setiap kali ada push.
 
-📂 Project Structure
-- .github/workflows/: Skrip GitHub Actions (gh-pages.yml).
-- content/posts/: Output artikel .md hasil sinkronisasi Paralife-AI.
-- themes/PaperMod/: Submodule tema blog.
-- hugo.yaml: Konfigurasi utama site (Domain & Menu).
-- static/: Aset gambar dan file statis lainnya.
+## 🛠️ Tech Stack
+- **Engine**: Hugo dengan tema PaperMod.
+- **Automation**: [Paralife-AI](https://github.com/alsetyaardana/paralife-ai.git) — mengelola seluruh alur publikasi catatan.
+- **CI/CD**: GitHub Actions untuk build & deploy otomatis.
 
-👤 Maintainer
-- Alindra Setya Ardana
-- Role: Presales Engineer / Solution Architect Enthusiast.
-- Interests: IT Networking, Security, and Agentic AI.
+## 📂 Struktur Project
+- `.github/workflows/` — skrip GitHub Actions (gh-pages.yml).
+- `content/posts/` — artikel .md hasil publikasi Paralife-AI.
+- `themes/PaperMod/` — submodule tema blog.
+- `hugo.yaml` — konfigurasi utama site.
+- `static/` — aset gambar dan file statis lainnya.
 
-Last updated: Juli 23, 2026
+## 👤 Maintainer
+Alindra Setya Ardana — Presales Engineer / Solution Architect Enthusiast. Fokus di IT Networking, Security, dan Agentic AI.
